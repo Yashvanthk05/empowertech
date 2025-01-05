@@ -1,9 +1,10 @@
-import { ChevronRight, PhoneCall, User } from 'lucide-react'
+import { ChevronRight, Locate, MapPin, PhoneCall, TextSearch, User } from 'lucide-react'
 import React from 'react'
+import Image from 'next/image'
 
 const Themes = () => {
   return (
-    <section className='min-w-full h-screen flex items-center justify-center flex-col'>
+    <section className='min-w-full min-h-screen flex items-center justify-center flex-col'>
         <div className='themebox'>
             <h2 className='themeboxtitle'>THEMES</h2>
             <p className='flex'><ChevronRight/>AI-Driven Safety Solutions for Real-Time Assistance</p>
@@ -16,31 +17,18 @@ const Themes = () => {
             <h2 className='themeboxtitle tb2'>EVENT OVERVIEW</h2>
             <p>The Empower-tech, a Social Well-Being Hackathon aims to bring together innovators, technologists, and changemakers to develop solutions that prioritize social equality, justice, empowerment, and sustainable development. This Hackathon will focus on creating impactful, AI-driven safety solutions to address challenges across demographics while fostering community resilience and inclusivity.</p>
         </div>
-        <div className='flex gap-2 flex-wrap'>
-        <div className='themebox tb22'>
+        <div className='flex gap-2 flex-wrap justify-center'>
+        <div className='themebox tb22 justify-evenly'>
             <h2 className='themeboxtitle themeboxtitle2 tb2'>VENUE</h2>
-            <p className='text-wrap text-center'>VIT Chennai (MG Auditorium)</p>
+            <p className='text-wrap text-center flex gap-1'><MapPin/> VIT Chennai (MG Auditorium)</p>
         </div>
-            <div className='themebox tb22'>
-                <h2 className='themeboxtitle themeboxtitle2 tb2'>Conducted by</h2>
-                <p>ACM</p>
-                <p>OSPC</p>
-                <p>IEEE WIE</p>
-            </div>
-        </div>
-        <div className='flex gap-2 flex-wrap items-center content-center'>
-            <div className='themebox tb22'>
-                <h2 className='themeboxtitle themeboxtitle2 tb2'>STUDENT COORDINATORS</h2>
-                <p className='flex'>SRUTHI PRIYA - <PhoneCall/>720021631</p>
-                <p className='flex'>JANAA HARINI S - <PhoneCall/> 6364612777</p>
-                <p className='flex'>BHARATHI - <PhoneCall/> 7358218079</p>
-            </div>
-            <div className='themebox tb22'>
-                <h2 className='themeboxtitle themeboxtitle2 tb2'>FACULTY COORDINATORS</h2>
-                <p className='flex gap-2'><User/> Dr.U.Srinivasa Rao</p>
-                <p className='flex gap-2'><User/> Dr.Jayaram</p>
-                <p className='flex gap-2'><User/> Dr.Vydeki</p>
-                <p className='flex gap-2'><User/> Dr.Suganya R</p>
+            <div className='themebox tb22 gap-4'>
+                <h2 className='themeboxtitle themeboxtitle2 tb2'>CONDUCTED BY</h2>
+                <div className='flex gap-4'>
+                    <Image src={"/ospc.jpg"} height={100} width={100} alt="OSPC Logo" className='logos'/>
+                    <Image src={"/acm.png"} height={100} width={100} alt="ACM LOGO" className='logos ieeewie'/>
+                    <Image src={"/ieeewie.jpg"} height={100} width={100} alt="IEEEWIE Logo" className='logos'/>
+                </div>
             </div>
         </div>
     </section>

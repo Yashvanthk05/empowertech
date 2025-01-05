@@ -36,7 +36,7 @@ export function TimelineEvent({
         className={`
           relative p-6 rounded-xl backdrop-blur-xl border border-white/10
           ${isActive ? 'bg-white/15' : 'bg-white/5'}
-          transition-all duration-300 hover:bg-white/20 cursor-pointer
+          transition-all duration-500 ease-in hover:bg-white/20 cursor-pointer
           transform ${isActive ? 'scale-105' : 'scale-100'}
         `}
       >

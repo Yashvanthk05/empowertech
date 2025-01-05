@@ -1,13 +1,14 @@
 import React from "react";
 import FlickeringGrid from "./ui/flickering-grid";
 import { Circle, IndianRupee } from "lucide-react";
+import Link from "next/link";
 
 const Hero = () => {
   return (
-    <section className="flex flex-col items-center justify-center hero h-screen relative rounded-lg w-full bg-background bg-black overflow-hidden gap-10 relative">
+    <section className="flex flex-col items-center justify-center hero min-h-screen relative rounded-lg w-full bg-background bg-black overflow-hidden gap-10 relative">
         <div className="flex flex-col items-center">
           <h1 className="z-10 herotitle">EMPOWER-TECH</h1>
-          <span className="herodesc" style={{fontSize:24}}>INNOVATE FOR SOCIAL EQUALITY & EMPOWERMENT</span>
+          <span className="herodesc flex items-center justify-center flex-wrap gap-1" style={{fontSize:24}}><span>Innovate for Social Equality</span><span> & </span><span>Empowerment</span></span>
           <span className="z-10 herodesc pt-4">24 Hour Hackathon</span>
         </div>
         <FlickeringGrid
@@ -20,9 +21,9 @@ const Hero = () => {
           height={2000}
           width={2000}
         />
-        <div className="homebtn">
+        <Link className="homebtn" href={"https://unstop.com/p/empowertech-vit-chennai-1328559"}>
           Register Now
-        </div>
+        </Link>
         <div className="flex flex-col z-10">
           <span className="top"><Circle stroke="none" size="20" fill="#FDDBBB"/><Circle stroke="none" size="20" fill="#F0C1E1"/><Circle stroke="none" size="20" fill="#CB9DF0"/></span>
           <div className="herocard">
