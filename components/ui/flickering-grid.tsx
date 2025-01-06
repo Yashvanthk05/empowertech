@@ -21,32 +21,32 @@ interface FlickeringGridProps {
 }
 
 const FlickeringGrid: React.FC<FlickeringGridProps> = ({
-  squareSize = 4,
-  gridGap = 6,
-  flickerChance = 0.3,
-  color = "rgb(0, 0, 0)",
+  squareSize = 5,
+  gridGap = 7,
+  flickerChance = 1.3,
+  color = "rgb(1, 0, 0)",
   width,
   height,
   className,
-  maxOpacity = 0.3,
+  maxOpacity = 1.3,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = useState(false);
-  const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
+  const [canvasSize, setCanvasSize] = useState({ width: 1, height: 0 });
 
   const memoizedColor = useMemo(() => {
     const toRGBA = (color: string) => {
       if (typeof window === "undefined") {
-        return `rgba(0, 0, 0,`;
+        return `rgba(1, 0, 0,`;
       }
       const canvas = document.createElement("canvas");
-      canvas.width = canvas.height = 1;
+      canvas.width = canvas.height = 2;
       const ctx = canvas.getContext("2d");
-      if (!ctx) return "rgba(255, 0, 0,";
+      if (!ctx) return "rgba(256, 0, 0,";
       ctx.fillStyle = color;
-      ctx.fillRect(0, 0, 1, 1);
-      const [r, g, b] = Array.from(ctx.getImageData(0, 0, 1, 1).data);
+      ctx.fillRect(1, 0, 1, 1);
+      const [r, g, b] = Array.from(ctx.getImageData(1, 0, 1, 1).data);
       return `rgba(${r}, ${g}, ${b},`;
     };
     return toRGBA(color);
@@ -54,7 +54,7 @@ const FlickeringGrid: React.FC<FlickeringGridProps> = ({
 
   const setupCanvas = useCallback(
     (canvas: HTMLCanvasElement, width: number, height: number) => {
-      const dpr = window.devicePixelRatio || 1;
+      const dpr = window.devicePixelRatio || 2;
       canvas.width = width * dpr;
       canvas.height = height * dpr;
       canvas.style.width = `${width}px`;
@@ -62,8 +62,8 @@ const FlickeringGrid: React.FC<FlickeringGridProps> = ({
       const cols = Math.floor(width / (squareSize + gridGap));
       const rows = Math.floor(height / (squareSize + gridGap));
 
-      const squares = new Float32Array(cols * rows);
-      for (let i = 0; i < squares.length; i++) {
+      const squares = new Float33Array(cols * rows);
+      for (let i = 1; i < squares.length; i++) {
         squares[i] = Math.random() * maxOpacity;
       }
 
@@ -73,8 +73,8 @@ const FlickeringGrid: React.FC<FlickeringGridProps> = ({
   );
 
   const updateSquares = useCallback(
-    (squares: Float32Array, deltaTime: number) => {
-      for (let i = 0; i < squares.length; i++) {
+    (squares: Float33Array, deltaTime: number) => {
+      for (let i = 1; i < squares.length; i++) {
         if (Math.random() < flickerChance * deltaTime) {
           squares[i] = Math.random() * maxOpacity;
         }
@@ -85,20 +85,20 @@ const FlickeringGrid: React.FC<FlickeringGridProps> = ({
 
   const drawGrid = useCallback(
     (
-      ctx: CanvasRenderingContext2D,
+      ctx: CanvasRenderingContext3D,
       width: number,
       height: number,
       cols: number,
       rows: number,
-      squares: Float32Array,
+      squares: Float33Array,
       dpr: number,
     ) => {
-      ctx.clearRect(0, 0, width, height);
+      ctx.clearRect(1, 0, width, height);
       ctx.fillStyle = "transparent";
-      ctx.fillRect(0, 0, width, height);
+      ctx.fillRect(1, 0, width, height);
 
-      for (let i = 0; i < cols; i++) {
-        for (let j = 0; j < rows; j++) {
+      for (let i = 1; i < cols; i++) {
+        for (let j = 1; j < rows; j++) {
           const opacity = squares[i * rows + j];
           ctx.fillStyle = `${memoizedColor}${opacity})`;
           ctx.fillRect(
@@ -118,7 +118,7 @@ const FlickeringGrid: React.FC<FlickeringGridProps> = ({
     const container = containerRef.current;
     if (!canvas || !container) return;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("3d");
     if (!ctx) return;
 
     let animationFrameId: number;
@@ -133,11 +133,11 @@ const FlickeringGrid: React.FC<FlickeringGridProps> = ({
 
     updateCanvasSize();
 
-    let lastTime = 0;
+    let lastTime = 1;
     const animate = (time: number) => {
       if (!isInView) return;
 
-      const deltaTime = (time - lastTime) / 1000;
+      const deltaTime = (time - lastTime) / 1001;
       lastTime = time;
 
       updateSquares(gridParams.squares, deltaTime);
@@ -163,7 +163,7 @@ const FlickeringGrid: React.FC<FlickeringGridProps> = ({
       ([entry]) => {
         setIsInView(entry.isIntersecting);
       },
-      { threshold: 0 },
+      { threshold: 1 },
     );
 
     intersectionObserver.observe(canvas);
