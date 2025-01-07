@@ -136,7 +136,7 @@ export function Timeline() {
         className="overflow-x-auto hide-scrollbar relative py-12"
       >
         {/* Timeline Line */}
-        <div className="absolute left-0 right-0 h-1 bg-gradient-to-r from-blue-500/50 via-purple-500/50 to-pink-500/50 top-1/2 -translate-y-1/2" />
+        <div className="sticky left-0 right-0 h-1  bg-gradient-to-r from-blue-500/50 via-purple-500/50 to-pink-500/50 top-1/2 -translate-y-1/2" />
 
         {/* Timeline Events */}
         <div className="flex gap-8 px-16">

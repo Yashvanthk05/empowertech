@@ -13,10 +13,23 @@ const Themes = () => {
             <p className='flex'><ChevronRight/>Child Safety & Protection</p>
             <p className='flex'><ChevronRight/>Community Empowerment & Public Safety</p>
         </div>
-        <div className='themebox'>
-            <h2 className='themeboxtitle tb2'>EVENT OVERVIEW</h2>
-            <p>The Empower-tech, a Social Well-Being Hackathon aims to bring together innovators, technologists, and changemakers to develop solutions that prioritize social equality, justice, empowerment, and sustainable development. This Hackathon will focus on creating impactful, AI-driven safety solutions to address challenges across demographics while fostering community resilience and inclusivity.</p>
-        </div>
+        <div className='themebox h-full'>
+            <h2 className='themeboxtitle tb2'>EVENT<br/>OVERVIEW</h2>
+             <p className='flex'>
+        <ChevronRight /> Aim to bring together innovators, technologists, and changemakers.
+      </p>
+      <p className='flex'>
+        <ChevronRight /> Focus on developing solutions that prioritize social equality, justice, empowerment, and sustainable development.
+      </p>
+      <p className='flex'>
+        <ChevronRight /> Focus on creating impactful, AI-driven safety solutions to address challenges across demographics.
+      </p>
+      <p className='flex'>
+        <ChevronRight /> Foster community resilience and inclusivity through technology.
+      </p>
+      <p className='flex'>
+        <ChevronRight /> Address challenges in the realm of social equality and justice using technology.
+      </p>        </div>
         <div className='flex gap-2 flex-wrap justify-center'>
         <div className='themebox tb22 justify-evenly'>
             <h2 className='themeboxtitle themeboxtitle2 tb2'>VENUE</h2>
