@@ -4,7 +4,6 @@ import Hero from '@/components/Hero'
 import Navbar from '@/components/Navbar'
 import Themes from '@/components/Themes'
 import Timeline from "@/components/TimelineComponent"
-
 import { useEffect } from 'react'
 
 

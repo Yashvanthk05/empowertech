@@ -1,64 +1,91 @@
 "use client";
 
-import { Clock, Code2, Flag, Lightbulb, Presentation, Rocket, Trophy, Users } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
+import { Clock, Code2, Flag, Lightbulb, Presentation, Utensils, Moon, Coffee, Trophy } from "lucide-react";import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { TimelineEvent } from "./TimelineEvent";
 
 const timelineData = [
   {
-    title: "Registration Opens",
-    time: "Day 1 - 9:00 AM",
-    description: "Teams can register and start forming their groups",
-    icon: Flag,
-    color: "bg-blue-500",
-  },
-  {
-    title: "Opening Ceremony",
-    time: "Day 1 - 10:00 AM",
-    description: "Welcome address and theme announcement",
+    title: "Opening Ceremony & Guest Speech",
+    time: "Day 1 - 3:00 PM",
+    description: "Welcome address and guest speech to kick off the hackathon",
     icon: Presentation,
     color: "bg-purple-500",
   },
   {
-    title: "Team Formation",
-    time: "Day 1 - 11:00 AM",
-    description: "Find your teammates and brainstorm ideas",
-    icon: Users,
-    color: "bg-green-500",
-  },
-  {
-    title: "Hacking Begins",
-    time: "Day 1 - 12:00 PM",
-    description: "Start working on your innovative projects",
+    title: "Hack Begins",
+    time: "Day 1 - 4:00 PM",
+    description: "Teams start working on their projects",
     icon: Code2,
     color: "bg-red-500",
   },
   {
-    title: "Ideation Workshop",
-    time: "Day 1 - 2:00 PM",
-    description: "Workshop on brainstorming and planning",
-    icon: Lightbulb,
+    title: "Dinner",
+    time: "Day 1 - 8:30 PM to 9:30 PM",
+    description: "Break for dinner and refreshments",
+    icon: Utensils,
     color: "bg-yellow-500",
   },
   {
-    title: "Midnight Milestone",
-    time: "Day 2 - 12:00 AM",
-    description: "Late night check-in and progress sharing",
+    title: "Overnight Work",
+    time: "Day 1 - 9:30 PM to 12:00 AM",
+    description: "Teams continue working overnight",
+    icon: Moon,
+    color: "bg-blue-500",
+  },
+  {
+    title: "Overnight Hacking",
+    time: "Day 2 - 12:00 AM to 8:00 AM",
+    description: "Hacking continues through the night",
     icon: Clock,
     color: "bg-indigo-500",
   },
   {
-    title: "Project Submissions",
-    time: "Day 2 - 10:00 AM",
-    description: "Submit your projects for judging",
-    icon: Rocket,
+    title: "Breakfast",
+    time: "Day 2 - 8:00 AM to 9:00 AM",
+    description: "Morning break with breakfast served",
+    icon: Coffee,
+    color: "bg-green-500",
+  },
+  {
+    title: "Hackathon Continues",
+    time: "Day 2 - 9:00 AM to 12:00 PM",
+    description: "Teams refine and finalize their projects",
+    icon: Code2,
+    color: "bg-red-500",
+  },
+  {
+    title: "Lunch",
+    time: "Day 2 - 12:00 PM to 1:00 PM",
+    description: "Break for lunch",
+    icon: Utensils,
+    color: "bg-yellow-500",
+  },
+  {
+    title: "Hackathon Ends",
+    time: "Day 2 - 1:00 PM to 3:00 PM",
+    description: "Final touches and project submissions",
+    icon: Flag,
+    color: "bg-orange-500",
+  },
+  {
+    title: "Evaluation & Pitching",
+    time: "Day 2 - 3:00 PM to 4:00 PM",
+    description: "Teams present their projects for evaluation",
+    icon: Lightbulb,
     color: "bg-pink-500",
   },
   {
-    title: "Judging & Awards",
-    time: "Day 2 - 2:00 PM",
-    description: "Project presentations and winners",
+    title: "Break",
+    time: "Day 2 - 4:00 PM to 4:30 PM",
+    description: "Short break before the final ceremony",
+    icon: Coffee,
+    color: "bg-blue-500",
+  },
+  {
+    title: "Awards Ceremony & Closing Remarks",
+    time: "Day 2 - 4:30 PM to 5:30 PM",
+    description: "Winners announced and closing remarks",
     icon: Trophy,
     color: "bg-orange-500",
   },
@@ -109,7 +136,7 @@ export function Timeline() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative overflow-hidden">
       {/* Navigation Buttons */}
       <button
         onClick={() => handleScroll("left")}
@@ -136,7 +163,7 @@ export function Timeline() {
         className="overflow-x-auto hide-scrollbar relative py-12"
       >
         {/* Timeline Line */}
-        <div className="absolute left-0 right-0 h-1 bg-gradient-to-r from-blue-500/50 via-purple-500/50 to-pink-500/50 top-1/2 -translate-y-1/2" />
+        <div className="sticky left-0 right-0 h-1  bg-gradient-to-r from-blue-500/50 via-purple-500/50 to-pink-500/50 top-1/2 -translate-y-1/2" />
 
         {/* Timeline Events */}
         <div className="flex gap-8 px-16">

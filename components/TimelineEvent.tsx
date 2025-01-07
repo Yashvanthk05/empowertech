@@ -34,20 +34,24 @@ export function TimelineEvent({
     >
       <div
         className={`
-          relative p-6 rounded-xl backdrop-blur-xl border border-white/10
-          ${isActive ? 'bg-white/15' : 'bg-white/5'}
+          relative p-6 rounded-xl h-[250px] backdrop-blur-xl border border-white/10
+          ${isActive ? "bg-white/15" : "bg-white/5"}
           transition-all duration-500 ease-in hover:bg-white/20 cursor-pointer
-          transform ${isActive ? 'scale-105' : 'scale-100'}
         `}
       >
-        <div className={`${color} w-12 h-12 rounded-full flex items-center justify-center mb-4`}>
+        <div
+          className={`${color} w-12 h-12 rounded-full flex items-center justify-center mb-4`}
+        >
           <Icon className="w-6 h-6 text-white" />
         </div>
         <h3 className="text-xl font-bold mb-2 text-white">{title}</h3>
         <p className="text-sm text-blue-200 mb-2">{time}</p>
         <p className="text-sm text-gray-300">{description}</p>
       </div>
-      <div className={`absolute -bottom-2 left-1/2 w-4 h-4 rounded-full ${color} transform -translate-x-1/2 transition-transform duration-300 ${isActive ? 'scale-150' : 'scale-100'}`} />
+      <div
+        className={`absolute -bottom-2 left-1/2 w-4 h-4 rounded-full ${color} transform -translate-x-1/2`}
+      />
     </motion.div>
   );
 }
+
