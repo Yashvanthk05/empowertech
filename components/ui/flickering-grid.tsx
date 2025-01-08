@@ -9,7 +9,6 @@ interface FlickeringGridProps {
   width?: number;
   height?: number;
   className?: string;
-
   maxOpacity?: number;
 }
 
@@ -27,7 +26,7 @@ const FlickeringGrid: React.FC<FlickeringGridProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = useState(false);
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
-  const [lenis, setLenis] = useState<Lenis | null>(null); // Lenis instance
+  const [lenis, setLenis] = useState<Lenis | null>(null);
 
   const memoizedColor = useMemo(() => {
     const toRGBA = (color: string) => {
@@ -108,7 +107,6 @@ const FlickeringGrid: React.FC<FlickeringGridProps> = ({
   );
 
   useEffect(() => {
-    // Initialize Lenis
     const lenisInstance = new Lenis();
     setLenis(lenisInstance);
     lenisInstance.start();
@@ -180,7 +178,10 @@ const FlickeringGrid: React.FC<FlickeringGridProps> = ({
   }, [setupCanvas, updateSquares, drawGrid, width, height, isInView]);
 
   return (
-    <div ref={containerRef} className={`w-full h-full ${className}`}>
+    <div
+      ref={containerRef}
+      className={`absolute w-full h-full overflow-hidden rounded-lg ${className}`}
+      >
       <canvas
         ref={canvasRef}
         className="pointer-events-none"
