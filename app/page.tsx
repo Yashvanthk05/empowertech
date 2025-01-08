@@ -6,11 +6,11 @@ import Timeline from "@/components/TimelineComponent";
 import Lenis from 'lenis';
 
 const Page = () => {
-  const LenisRef = useRef(null);
+  const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
     const lenis = new Lenis();
-    LenisRef.current = lenis;
+    lenisRef.current = lenis;
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -28,5 +28,4 @@ const Page = () => {
 }
 
 export default Page;
-
 
