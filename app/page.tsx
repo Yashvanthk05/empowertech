@@ -11,7 +11,7 @@ const Page = () => {
   useEffect(() => {
     const lenis = new Lenis();
     lenisRef.current = lenis;
-    function raf(time) {
+    function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
