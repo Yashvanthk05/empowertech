@@ -1,6 +1,7 @@
 "use client";
 
-import { Clock, Code2, Flag, Lightbulb, Presentation, Utensils, Moon, Coffee, Trophy } from "lucide-react";import { useState, useRef, useEffect } from "react";
+import { Clock, Code2, Flag, Lightbulb, Presentation, Utensils, Moon, Coffee, Trophy } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { TimelineEvent } from "./TimelineEvent";
 
@@ -182,3 +183,4 @@ export function Timeline() {
     </div>
   );
 }
+
