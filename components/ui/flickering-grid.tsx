@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import Lenis from "lenis";
 
 interface FlickeringGridProps {
   squareSize?: number;
@@ -26,7 +25,6 @@ const FlickeringGrid: React.FC<FlickeringGridProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = useState(false);
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
-  const [lenis, setLenis] = useState<Lenis | null>(null);
 
   const memoizedColor = useMemo(() => {
     const toRGBA = (color: string) => {
@@ -107,10 +105,6 @@ const FlickeringGrid: React.FC<FlickeringGridProps> = ({
   );
 
   useEffect(() => {
-    const lenisInstance = new Lenis();
-    setLenis(lenisInstance);
-    lenisInstance.start();
-
     const canvas = canvasRef.current;
     const container = containerRef.current;
     if (!canvas || !container) return;
@@ -173,7 +167,6 @@ const FlickeringGrid: React.FC<FlickeringGridProps> = ({
       cancelAnimationFrame(animationFrameId);
       resizeObserver.disconnect();
       intersectionObserver.disconnect();
-      lenisInstance.destroy(); // Clean up Lenis
     };
   }, [setupCanvas, updateSquares, drawGrid, width, height, isInView]);
 
