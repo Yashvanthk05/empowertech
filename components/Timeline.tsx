@@ -1,9 +1,19 @@
 "use client";
 
-import { Clock, Code2, Flag, Lightbulb, Presentation, Utensils, Moon, Coffee, Trophy } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import { TimelineEvent } from "./TimelineEvent";
+import {
+  Clock,
+  Code2,
+  Flag,
+  Lightbulb,
+  Presentation,
+  Utensils,
+  Moon,
+  Coffee,
+  Trophy,
+} from "lucide-react";
+import {TimelineEvent}  from "./TimelineEvent"
 
 const timelineData = [
   {
@@ -77,13 +87,6 @@ const timelineData = [
     color: "bg-pink-500",
   },
   {
-    title: "Break",
-    time: "Day 2 - 4:00 PM to 4:30 PM",
-    description: "Short break before the final ceremony",
-    icon: Coffee,
-    color: "bg-blue-500",
-  },
-  {
     title: "Awards Ceremony & Closing Remarks",
     time: "Day 2 - 4:30 PM to 5:30 PM",
     description: "Winners announced and closing remarks",
@@ -109,16 +112,11 @@ export function Timeline() {
           }
         });
       },
-      {
-        root: scrollRef.current,
-        threshold: 0.5,
-      }
+      { root: scrollRef.current, threshold: 0.5 }
     );
 
     eventRefs.current.forEach((ref) => {
-      if (ref) {
-        observer.observe(ref);
-      }
+      if (ref) observer.observe(ref);
     });
 
     return () => {
@@ -138,7 +136,7 @@ export function Timeline() {
 
   return (
     <div className="relative overflow-hidden">
-      {/* Navigation Buttons */}
+      {/* Scroll Buttons */}
       <button
         onClick={() => handleScroll("left")}
         className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 backdrop-blur-lg hover:bg-white/20 transition-all"
@@ -159,14 +157,7 @@ export function Timeline() {
       </button>
 
       {/* Timeline Container */}
-      <div
-        ref={scrollRef}
-        className="overflow-x-auto hide-scrollbar relative py-12"
-      >
-        {/* Timeline Line */}
-        <div className="sticky left-0 right-0 h-1  bg-gradient-to-r from-blue-500/50 via-purple-500/50 to-pink-500/50 top-1/2 -translate-y-1/2" />
-
-        {/* Timeline Events */}
+      <div ref={scrollRef} className="overflow-x-auto hide-scrollbar relative py-12">
         <div className="flex gap-8 px-16">
           {timelineData.map((event, index) => (
             <TimelineEvent
